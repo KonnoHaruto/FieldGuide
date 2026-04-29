@@ -12,7 +12,7 @@ unit_result read_unit_result()
 {
     unit_result result;
     result.unit_code = read_string("Enter unit code: ");
-    result.unit_name = read_string("Enter unit name: ");
+    result.unit_name = read_string("Enter unit namue: ");
     result.score = read_integer("Enter the score: ");
 
     return result;
