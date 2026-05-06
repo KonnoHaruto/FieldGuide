@@ -32,7 +32,7 @@ int read_integer(string prompt, int low, int high)
     return value;
 }
 
-bool read_bool(string prompt)
+string read_bool(string prompt)
 {
     string line = read_string(prompt);
     while(line != "y" && line != "n")
@@ -40,5 +40,5 @@ bool read_bool(string prompt)
         write_line("Please enter y or n");
         line = read_string(prompt);
     }
-    return line == "y";
+    return line;
 }

@@ -1,14 +1,11 @@
 #include "splashkit.h"
 #include "utilities.h"
 
-const int MIN_OPTION = 1;
-const int MAX_OPTION = 3;
-
 enum menu_option
 {
-    ENTER_DETAIL,
-    PRINT,
-    QUIT,
+    ENTER_DETAIL = 1,
+    PRINT = 2,
+    QUIT = 3,
 };
 
 struct book_data
@@ -18,6 +15,7 @@ struct book_data
     int pages;
 };
 
+// This will ask user the book details.
 void get_book_detail(book_data &book)
 {
     write_line();
@@ -27,6 +25,7 @@ void get_book_detail(book_data &book)
     write_line();
 }
 
+// Get the book details and return it.
 book_data start_system()
 {
     book_data book;
@@ -37,6 +36,7 @@ book_data start_system()
     return book;
 }
 
+// Print the menu.
 void write_menu()
 {
     write_line("Menu: ");
@@ -45,14 +45,16 @@ void write_menu()
     write_line("3 - Quit");
 }
 
+// This will ask options user wants.
 menu_option read_menu()
 {
     write_menu();
-    int option = read_integer("Option: ", MIN_OPTION, MAX_OPTION);
+    menu_option option = menu_option(read_integer("Please choose an option: ", 1, 3));
 
-    return menu_option(option - 1);
+    return menu_option(option);
 }
 
+// Print the book details.
 void print_detail(const book_data &book)
 {
     write_line();

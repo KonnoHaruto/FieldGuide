@@ -76,17 +76,7 @@ void print_details(string name, int goals, int behinds, int score)
     write_line();
 }
 
-bool check_continued()
-{
-    string is_continued = read_bool("Are you sure you want to quit? [Y/n]: ");
-    if (is_continued == "y")
-    {
-        return false;
-    }
-    else return true;
-}
-
-bool show_menu(string name, int &goals, int &behinds, int &score)
+void show_menu(string name, int &goals, int &behinds, int &score)
 {
     int option;
 
@@ -112,21 +102,21 @@ bool show_menu(string name, int &goals, int &behinds, int &score)
         print_details(name, goals, behinds, score);
         break;
     case 4:
-        return false;
+        return;
         break;
     default:
         break;
     }
-    return true;
+    return;
 }
 
 
-void start_calculator()
+
+int main()
 {
     string team_name;
     int goal, behind, score;
-
-    bool is_continued;
+    bool is_continued = true;
 
     draw_title("Score Calculator", MAX_WIDTH);
     write_line();
@@ -143,22 +133,11 @@ void start_calculator()
 
     do
     {
-        is_continued = show_menu(team_name, goal, behind, score);
+        show_menu(team_name, goal, behind, score);
         write_line();
 
-        if(!is_continued)
-        {
-            is_continued = check_continued();
-        }
-    }
-    while(is_continued);
+        is_continued = read_bool("Are you sure you want to quit? [Y/n]: ");
+    } while(! is_continued);
     write_line();
     write("Bye!");
-}
-
-
-
-int main()
-{
-    start_calculator();
 }

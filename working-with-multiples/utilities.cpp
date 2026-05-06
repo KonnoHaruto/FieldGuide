@@ -32,6 +32,19 @@ int read_integer(string prompt, int low, int high)
     return value;
 }
 
+double read_double(string prompt)
+{
+    string line = read_string(prompt);
+
+    while (! is_double(line) )
+    {
+        write_line("Please enter a double number.");
+        line = read_string(prompt);
+    }
+
+    return to_double(line);
+}
+
 bool read_bool(string prompt)
 {
     string line = read_string(prompt);

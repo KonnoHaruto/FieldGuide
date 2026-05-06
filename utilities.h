@@ -34,8 +34,8 @@ int read_integer(string prompt, int low, int high);
  * Read an integer from the user
  *
  * @param prompt the message to show the user
- * @returns the bool entered (y or n)
+ * @returns the string entered (y or n)
  */
-bool read_bool(string prompt);
+string read_bool(string prompt);
 
 #endif
